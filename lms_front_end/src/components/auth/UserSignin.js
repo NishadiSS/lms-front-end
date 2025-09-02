@@ -34,7 +34,7 @@ const UserSignin = () => {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
-            <div className="card-header">User Sign In</div>
+           <div className="card-header text-center fw-bold">User Sign In</div>
             <div className="card-body">
               <form onSubmit={handleSignin}>
                 <div className="form-group mb-3">

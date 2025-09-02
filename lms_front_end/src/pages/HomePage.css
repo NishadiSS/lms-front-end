@@ -1,0 +1,57 @@
+.home-page-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/public/images/home-bg.jpeg'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(60%); /* Adjust as needed for text visibility */
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-page-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.0); /* Semi-transparent background for text */
+    border-radius: 10px;
+    max-width: 800px;
+    transform: translateY(-84%);
+}
+
+.home-page-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.home-page-content p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.home-page-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.home-page-content a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure navbar is above background image */
+.navbar {
+    position: relative;
+    z-index: 100;
+}

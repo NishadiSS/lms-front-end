@@ -36,7 +36,7 @@ const UserSignup = () => {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
-            <div className="card-header">User Sign Up</div>
+            <div className="card-header text-center fw-bold">User Sign Up</div>
             <div className="card-body">
               <form onSubmit={handleSignup}>
                 <div className="form-group mb-3">
