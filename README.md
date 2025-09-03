@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# LMS Frontend (React.js)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository hosts the React.js frontend application for the University Course Management System. It provides an interactive and responsive user interface for managing courses, users, and enrollments, communicating securely with the backend API.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Prerequisites](#prerequisites)
+- [Local Setup](#local-setup)
+  - [Configuration](#configuration)
+  - [Run Application](#run-application)
+- [Deployment](#deployment)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   **User Authentication**: Login and registration forms with JWT-based authentication.
+-   **Role-Based Access**: Dynamically protected routes and UI elements based on user roles (Student, Instructor, Admin).
+-   **Course Management Interface**: Displaying available courses. (Extendable for CRUD forms).
+-   **Responsive Design**: Built with Bootstrap 5 for optimal viewing on various devices.
+-   **API Integration**: Secure communication with the Spring Boot backend using Axios.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology Stack
 
-### `npm test`
+-   **Frontend**: React.js (Create React App), JavaScript (ES6+), npm.
+-   **Routing**: React Router DOM.
+-   **Styling**: Bootstrap 5, Custom CSS.
+-   **API Client**: Axios.
+-   **Development Tools**: VS Code.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Prerequisites
 
-### `npm run build`
+-   Node.js (v16+)
+-   npm (Node Package Manager)
+-   Git
+-   The LMS Backend application (running locally or deployed).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Local Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Configuration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/lms-front-end.git # Replace with your actual repo URL
+    cd lms_front_end
+    ```
+2.  **Environment Variables**: Create a `.env` file in the root of the `lms_front_end` project (or `.env.development` / `.env.production`) and add your backend API base URL:
+    ```
+    REACT_APP_API_BASE_URL=http://localhost:8080/api
+    # Or, if your backend is deployed:
+    # REACT_APP_API_BASE_URL=https://lms-back-end-production-9099.up.railway.app
+    ```
+    **IMPORTANT**: Ensure `REACT_APP_API_BASE_URL` matches your backend's actual URL.
 
-### `npm run eject`
+### Run Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+2.  **Start Development Server**:
+    ```bash
+    npm start
+    ```
+    The frontend application will open in your browser at `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The frontend application is designed for static site deployment.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-   **Process**: Integrated with GitHub, pushing new code to the `main` branch automatically triggers a build (`npm run build`) and deploys the static assets.
+-   **Production URL**: `https://lms-front-end-production.up.railway.app` (This should match the URL configured in your backend's CORS settings).
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
