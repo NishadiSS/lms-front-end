@@ -1,43 +1,42 @@
-// lms_front_end/src/pages/StudentEnrollmentsViewPage.js
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import enrollmentService from "../services/enrollment.service"; // ඔබගේ enrollment.service ගොනුවට නිවැරදි path එක යොදන්න.
-import authService from "../services/auth.service"; // ඔබගේ auth.service ගොනුවට නිවැරදි path එක යොදන්න.
+import enrollmentService from "../services/enrollment.service"; 
+import authService from "../services/auth.service"; 
 
 const StudentEnrollmentsViewPage = () => {
   const [enrollments, setEnrollments] = useState([]);
-  const [studentIdInput, setStudentIdInput] = useState(""); // Student ID input field එක සඳහා state එක
+  const [studentIdInput, setStudentIdInput] = useState(""); 
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showEnrollmentTable, setShowEnrollmentTable] = useState(false);
   const [isStudentProfileMissing, setIsStudentProfileMissing] = useState(false);
   const [isUnauthorizedToViewOtherStudent, setIsUnauthorizedToViewOtherStudent] = useState(false);
 
-  const currentUser = authService.retrieveCurrentUser(); // ඔබගේ auth.service හි retrieveCurrentUser() භාවිතා කරන්න.
+  const currentUser = authService.retrieveCurrentUser(); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Initial load/user change මත states clear කරන්න
+   
     setMessage("");
     setIsStudentProfileMissing(false);
     setIsUnauthorizedToViewOtherStudent(false);
     setShowEnrollmentTable(false);
     setEnrollments([]);
 
-    // පරිශීලකයා ශිෂ්‍යයෙක් නොවේ නම් log වී නොමැති නම් පණිවිඩයක් පෙන්වන්න.
+   
     if (!currentUser || !currentUser.roles.includes("ROLE_STUDENT")) {
       setMessage("You must be logged in as a student to view enrollments.");
-      // ProtectedRoute මගින් redirection සිදුවන නමුත්, මෙය fallback message එකකි.
+    
     }
   }, [currentUser, navigate]);
 
   const handleShowEnrollments = () => {
-    setMessage(""); // පෙර තිබූ messages clear කරන්න
+    setMessage(""); 
     setIsStudentProfileMissing(false);
     setIsUnauthorizedToViewOtherStudent(false);
-    setIsLoading(true); // Loading state පෙන්වීමට
-    setShowEnrollmentTable(false); // නව දත්ත fetch කරන තුරු table එක සඟවන්න
+    setIsLoading(true); 
+    setShowEnrollmentTable(false); 
 
     if (!currentUser || !currentUser.roles.includes("ROLE_STUDENT")) {
       setMessage("Please log in as a student to view your enrollments.");
@@ -45,22 +44,22 @@ const StudentEnrollmentsViewPage = () => {
       return;
     }
 
-    if (!studentIdInput.trim()) { // input field එක හිස්දැයි පරීක්ෂා කරන්න
+    if (!studentIdInput.trim()) { 
       setMessage("Please enter your Student ID to view enrollments.");
       setIsLoading(false);
       return;
     }
 
-    // Backend endpoint එකට Student ID එක යවා enrollments ලබා ගනී
+   
     enrollmentService.getEnrollmentsByProvidedStudentId(studentIdInput).then(
       (response) => {
-        setEnrollments(response.data); // ලැබෙන දත්ත enrollments state එකට සකසයි
-        setShowEnrollmentTable(true); // Table එක පෙන්වීමට සකසයි
+        setEnrollments(response.data); 
+        setShowEnrollmentTable(true); 
         setIsLoading(false);
         if (response.data.length === 0) {
           setMessage(`No enrollments found for Student ID: ${studentIdInput}.`);
         } else {
-          setMessage(""); // සාර්ථක නම් message එක clear කරයි
+          setMessage(""); 
         }
       },
       (error) => {
@@ -72,21 +71,21 @@ const StudentEnrollmentsViewPage = () => {
           error.message ||
           error.toString();
 
-        // Backend එකෙන් 403 Forbidden status එකක් ලැබුණොත් (අවසර නැතිනම්)
+        
         if (error.response && error.response.status === 403) {
           setIsUnauthorizedToViewOtherStudent(true);
-          setMessage(resMessage); // Backend හි නිශ්චිත unauthorized message එක display කරන්න
+          setMessage(resMessage); 
         }
-        // Backend එකෙන් "No student profile found" message එක එන්නේ නම්
+       
         else if (resMessage.includes("No student profile found for your user account.")) {
           setIsStudentProfileMissing(true);
-          setMessage(resMessage); // Backend හි නිශ්චිත missing profile message එක display කරන්න
+          setMessage(resMessage); 
         }
-        // වෙනත් දෝෂයක් නම්
+       
         else {
           setMessage("Error loading enrollments: " + resMessage);
         }
-        setShowEnrollmentTable(false); // දෝෂයක් ඇති වුවහොත් table එක නොපෙන්වන්න
+        setShowEnrollmentTable(false); 
       }
     );
   };
@@ -112,7 +111,7 @@ const StudentEnrollmentsViewPage = () => {
             />
           </div>
 
-          {/* Enrollments display කිරීමට බොත්තම */}
+         
           <button onClick={handleShowEnrollments} className="btn btn-primary mb-3">
             Show Enrolled Courses
           </button>
@@ -163,13 +162,13 @@ const StudentEnrollmentsViewPage = () => {
               </tbody>
             </table>
           )}
-          {/* search කිරීමෙන් පසු enrollments නොමැති විට පෙන්වන පණිවිඩය */}
+       
           {showEnrollmentTable && enrollments.length === 0 && !message && !isLoading && (
              <p className="alert alert-info mt-3">No enrollments found for Student ID: {studentIdInput}.</p>
           )}
         </>
       ) : (
-        // ශිෂ්‍යයෙකු ලෙස log වී නොමැති නම් පෙන්වන පණිවිඩය (ProtectedRoute මගින් හැසිරවිය යුතුය, නමුත් මෙය fallback එකකි)
+       
         <div className="alert alert-info mt-3" role="alert">
           Please log in as a student to view your enrollments.
         </div>

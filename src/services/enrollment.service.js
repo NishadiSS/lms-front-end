@@ -1,28 +1,20 @@
-// lms_front_end/src/services/enrollment.service.js
+import api from "./api"; 
 
-import api from "./api"; // ඔබගේ api.js ගොනුවට නිවැරදි path එක යොදන්න.
-                       // සාමාන්‍යයෙන්, src/services/api.js ලෙස තිබිය යුතුය.
-
+// Get logged-in student's enrollments
 const getMyEnrolledCourses = () => {
   return api.get("/enrollments/my-courses");
 };
 
-// ඔබට admin/instructor ලෙස enrollments fetch කිරීමට අවශ්‍ය නම්, මෙහි add කළ හැක.
-// උදාහරණයක් ලෙස:
-/*
-const getAllEnrollments = () => {
-  return api.get("/enrollments");
+// 🔥 New: Get enrollments by studentId (admin/instructor/student id ekak enter karala ganna)
+const getEnrollmentsByStudentId = (studentId) => {
+  return api.get(`/enrollments/student/${studentId}`);
 };
-
-const createEnrollment = (studentId, courseId) => {
-  return api.post("/enrollments", { studentId, courseId });
-};
-*/
 
 const enrollmentService = {
   getMyEnrolledCourses,
-  // getAllEnrollments, // අවශ්‍ය නම් uncomment කරන්න
-  // createEnrollment,  // අවශ්‍ය නම් uncomment කරන්න
+  getEnrollmentsByStudentId,   // include it here
+  // getAllEnrollments,
+  // createEnrollment,
 };
 
 export default enrollmentService;

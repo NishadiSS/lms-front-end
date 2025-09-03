@@ -20,6 +20,11 @@ const enrollStudentInCourse = (enrollData) => {
   return api.post("/enrollments", enrollData);
 };
 
+const getEnrollmentsByStudentId = (studentId) => {
+  return api.get(`/enrollments/student/${studentId}`);
+};
+
+
 const deleteEnrollment = (id) => {
   return api.delete(`/enrollments/${id}`);
 };
@@ -28,6 +33,7 @@ const enrollmentApi = {
   getAllEnrollments,
   getEnrollmentById,
   getEnrollmentsByStudent,
+  getEnrollmentsByStudentId,
   getEnrollmentsByCourse,
   enrollStudentInCourse,
   deleteEnrollment,

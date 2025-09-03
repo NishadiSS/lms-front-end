@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
+const API_BASE_URL = "http://localhost:8080/api";
+//const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user && user.token) { // Backend එක JwtResponse එකේ 'token' ලෙස ලබා දෙන නිසා
+    if (user && user.token) { 
       config.headers.Authorization = `Bearer ${user.token}`;
     }
     return config;

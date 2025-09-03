@@ -26,7 +26,7 @@ const EnrollmentForm = () => {
           studentApi.getAllStudents().then(res => {
               const currentStudent = res.data.find(s => s.userId === user.id);
               if (currentStudent) {
-                  // currentStudent.id යනු Number එකකි, එය String එකක් බවට convert කරන්න
+                
                   setEnrollmentData(prev => ({...prev, studentId: currentStudent.id.toString()}));
               } else {
                   setMessage("Error: No student profile found for your user account.");
@@ -117,7 +117,7 @@ const EnrollmentForm = () => {
           >
             <option value="">Select a Student</option>
             {students.map((student) => (
-              <option key={student.id} value={student.id.toString()}> {/* <<-- මෙහිදී toString() එකතු කරන්න */}
+              <option key={student.id} value={student.id.toString()}> 
                 {student.firstName} {student.lastName} ({student.studentId})
               </option>
             ))}
@@ -135,7 +135,7 @@ const EnrollmentForm = () => {
           >
             <option value="">Select a Course</option>
             {courses.map((course) => (
-              <option key={course.id} value={course.id.toString()}> {/* <<-- මෙහිදී toString() එකතු කරන්න */}
+              <option key={course.id} value={course.id.toString()}> 
                 {course.title} ({course.code})
               </option>
             ))}

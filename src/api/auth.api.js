@@ -5,7 +5,7 @@ const registerUser = (username, email, password, role) => {
     username,
     email,
     password,
-    role: [role], // Backend එක array එකක් බලාපොරොත්තු වන නිසා
+    role: [role], 
   });
 };
 

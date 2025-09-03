@@ -1,0 +1,135 @@
+
+
+.signup-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f0f2f5; 
+    padding: 20px;
+    box-sizing: border-box; 
+}
+
+.signup-card { 
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    width: 100%;
+    max-width: 900px; 
+    min-height: 500px; 
+}
+.signup-form-section { 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+.signup-form-section .form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.signup-form-section .form-control:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+}
+
+.signup-form-section label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+
+.signup-button { 
+    background-color: #4CAF50; /* Primary green color */
+    border-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 100%; 
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-color: #45a049;
+}
+
+
+.welcome-section {
+    background: linear-gradient(135deg, #4CAF50, #8bc34a); /* Green gradient background */
+    color: white;
+    padding: 40px;
+    border-radius: 0 15px 15px 0; /* Right side rounded corners */
+}
+
+.welcome-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 80%; 
+}
+
+.no-account-text { 
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.signup-link { 
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+    color: #e0e0e0; /* Lighter white on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .signup-card { 
+        flex-direction: column; 
+        max-width: 500px;
+        min-height: auto;
+    }
+    .welcome-section {
+        border-radius: 0 0 15px 15px; /* Bottom corners rounded */
+        padding: 30px 20px;
+    }
+    .signup-form-section { 
+        padding: 30px 20px;
+        order: -1; 
+    }
+    .signup-title {
+        font-size: 1.8em;
+    }
+    .welcome-title {
+        font-size: 2em;
+    }
+    .welcome-text {
+        font-size: 0.95em;
+    }
+}

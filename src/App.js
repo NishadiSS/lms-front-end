@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
-import AppNavbar from "./components/layout/AppNavbar"; // ඔබගේ Navbar component එක
+import AppNavbar from "./components/layout/AppNavbar"; 
 import UserSignin from "./components/auth/UserSignin";
 import UserSignup from "./components/auth/UserSignup";
 import CourseList from "./components/courses/CourseList";
-import authService from "./api/auth.api"; // ඔබගේ auth.api ගොනුවට නිවැරදි path එක යොදන්න
+import authService from "./api/auth.api"; 
 import HomePage from "./pages/HomePage";
 import UnauthorizedPage from "./pages/UnauthorizedPage";
 
@@ -29,20 +29,20 @@ import CourseDetails from "./components/courses/CourseDetails";
 import CourseForm from "./components/courses/CourseForm";
 
 // -- Custom Page Imports (as per discussion) --
-import MyEnrollmentsPage from "./pages/MyEnrollmentsPage"; // MyEnrollmentsPage import කරන්න
+import MyEnrollmentsPage from "./pages/MyEnrollmentsPage"; 
 
 const ProtectedRoute = ({ children, roles }) => {
   const currentUser = authService.retrieveCurrentUser();
 
   if (!currentUser) {
-    return <Navigate to="/signin" replace />; // Login නොවී සිටිනම් signin පිටුවට
+    return <Navigate to="/signin" replace />; 
   }
 
   const userRoles = currentUser.roles || [];
   const hasRequiredRole = roles.some(role => userRoles.includes(role.toUpperCase()));
 
   if (!hasRequiredRole) {
-    return <Navigate to="/unauthorized" replace />; // අවසර නැතිනම් unauthorized පිටුවට
+    return <Navigate to="/unauthorized" replace />; 
   }
 
   return children;
@@ -88,12 +88,12 @@ function App() {
           />
 
           {/* Enroll in a Course Page - For students to enroll in courses */}
-          {/* මෙම Route එක Student ට EnrollmentForm එක පෙන්වීමට යොදා ගනී */}
+        
           <Route
             path="/enroll-course" 
             element={
               <ProtectedRoute roles={["ROLE_STUDENT"]}>
-                <EnrollmentForm /> {/* මෙය ඔබගේ EnrollmentForm component එකට link කරන්න */}
+                <EnrollmentForm /> 
               </ProtectedRoute>
             }
           />
@@ -160,7 +160,7 @@ function App() {
           <Route
             path="/students/edit/:id"
             element={
-              <ProtectedRoute roles={["ROLE_ADMIN", "ROLE_STUDENT"]}> {/* Student ට තම profile edit කිරීමට ඉඩ දීම */}
+              <ProtectedRoute roles={["ROLE_ADMIN", "ROLE_STUDENT"]}> 
                 <StudentForm />
               </ProtectedRoute>
             }
@@ -209,16 +209,11 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/*
-            මෙම Route එක කලින් commented out කර තිබුනි.
-            දැන් මෙය uncomment කරන ලදි. මෙය EnrollmentForm එක නව enrollment එකක් නිර්මාණය කිරීමට
-            හෝ සංස්කරණය කිරීමට (edit/:id සමඟ භාවිතා කරන්නේ නම්) භාවිතා වේ.
-            EnrollmentDetails component එක මගින් /enrollments/new ට GET request එකක් යැවීම වැලැක්වීමට මෙය අත්‍යවශ්‍ය වේ.
-          */}
+       
           <Route
             path="/enrollments/new"
             element={
-              <ProtectedRoute roles={["ROLE_ADMIN", "ROLE_INSTRUCTOR"]}> {/* Admin, Instructor ට පමණක් enrollment එකක් create කිරීමට */}
+              <ProtectedRoute roles={["ROLE_ADMIN", "ROLE_INSTRUCTOR"]}> 
                 <EnrollmentForm />
               </ProtectedRoute>
             }
