@@ -8,7 +8,7 @@ const EnrollmentList = () => {
   const [enrollments, setEnrollments] = useState([]);
   const [message, setMessage] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
-  const [currentStudentId, setCurrentStudentId] = useState(null);
+  //const [currentStudentId, setCurrentStudentId] = useState(null);
 
   useEffect(() => {
     const user = authApi.retrieveCurrentUser();
@@ -20,7 +20,7 @@ const EnrollmentList = () => {
           .then(res => {
             const student = res.data.find(s => s.userId === user.id);
             if (student) {
-              setCurrentStudentId(student.id);
+            //  setCurrentStudentId(student.id);
               enrollmentApi.getEnrollmentsByStudent(student.id)
                 .then((response) => {
                   setEnrollments(response.data);

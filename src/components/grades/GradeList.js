@@ -8,7 +8,7 @@ const GradeList = () => {
   const [grades, setGrades] = useState([]);
   const [message, setMessage] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
-  const [currentStudentId, setCurrentStudentId] = useState(null);
+  //const [currentStudentId, setCurrentStudentId] = useState(null);
 
   useEffect(() => {
     const user = authApi.retrieveCurrentUser();
@@ -20,7 +20,7 @@ const GradeList = () => {
           .then(res => {
             const student = res.data.find(s => s.userId === user.id);
             if (student) {
-              setCurrentStudentId(student.id);
+              //setCurrentStudentId(student.id);
               gradeApi.getGradesByStudent(student.id)
                 .then((response) => {
                   setGrades(response.data);

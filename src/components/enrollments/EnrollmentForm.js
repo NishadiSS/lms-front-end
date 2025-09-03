@@ -90,9 +90,9 @@ const EnrollmentForm = () => {
     );
   };
 
-  const isAdmin = currentUser && currentUser.roles.includes("ROLE_ADMIN");
+  //const isAdmin = currentUser && currentUser.roles.includes("ROLE_ADMIN");
   const isStudent = currentUser && currentUser.roles.includes("ROLE_STUDENT");
-  const isInstructor = currentUser && currentUser.roles.includes("ROLE_INSTRUCTOR");
+  //const isInstructor = currentUser && currentUser.roles.includes("ROLE_INSTRUCTOR");
 
 
   return (
